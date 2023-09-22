@@ -1,19 +1,6 @@
-export const f = () => {
-  return "test";
-};
+import { RobotState } from "./model/RobotState";
+import { CommandParser } from "./parser/CommandParser";
+import { ConsoleIOManager } from "./parser/ConsoleIOManager";
 
-import readline from "readline/promises";
-
-const readlineInstance = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-const testPrompt = async () => {
-  const name = await readlineInstance.question("Your name:\n");
-  console.log(`Hi ${name}!`);
-  readlineInstance.close();
-  process.exit(0);
-};
-
-testPrompt();
+const commandParser = new CommandParser(new ConsoleIOManager(), new RobotState(5, 5));
+commandParser.start();
