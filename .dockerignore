@@ -54,4 +54,4 @@ coverage
 .node_repl_history
 .apiconnect
 junit.xml
-*/__tests__*
+**/__tests__*
