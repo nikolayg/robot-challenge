@@ -1,0 +1,48 @@
+
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+
+### WebStorm & VS Code ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+*.iml
+.idea/
+.vscode/
+
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Build
+dist
+Procfile
+*.zip
+
+# Others
+.env
+node_modules
+_book
+*.epub
+*.mobi
+*.pdf
+logs
+*.log
+npm-debug.log*
+pids
+*.pid
+*.seed
+lib-cov

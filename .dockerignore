@@ -1,0 +1,57 @@
+# Dependencies
+/node_modules
+# Local Build
+/bundle
+/dist
+# GIT
+/.git
+.gitignore
+.gitattributes
+# Log files
+npm-debug.log*
+npm-error.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+# Editor
+/.vscode
+# Runtime data
+pids
+*.pid
+*.seed
+# eBook & documentation
+_book
+*.epub
+*.mobi
+*.pdf
+*.md
+*.MD
+# Documentation
+README.md
+README.MD
+/.docs
+/gitarchitecture
+# Temp files
+*~
+*.swp
+*.swo
+# Misc.
+.env
+.DS_Store
+Dockerfile
+Worker.Dockerfile
+.dockerignore
+.cfignore
+.editorconfig
+.lintstagedrc
+.grunt
+lib-cov
+coverage
+.grunt
+.lock-wscript
+.npm
+.node_repl_history
+.apiconnect
+junit.xml
+*/__tests__*
