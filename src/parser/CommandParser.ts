@@ -16,6 +16,11 @@ export class CommandParser {
     this.io.close();
   }
 
+  /**
+   * Processes the command and returns if it's terminal or not.
+   * @param command - the command provided.
+   * @returns if this command should terminate the application.
+   */
   async processCommand(command: string) {
     try {
       const tokens = command
