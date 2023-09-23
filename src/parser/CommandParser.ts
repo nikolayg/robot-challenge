@@ -7,6 +7,7 @@ export class CommandParser {
   public async start() {
     try {
       await this.io.writeLine("Welcome to the Robot Simulator!");
+      await this.io.writeLine("The supported operations are: PLACE, MOVE, LEFT, RIGHT, REPORT, and EXIT");
 
       let finished = false;
       do {

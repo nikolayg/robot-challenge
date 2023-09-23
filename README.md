@@ -13,9 +13,23 @@
 The `robot-challenge` project implements a Node JS
 application, which simulates a toy robot moving on a table top.
 
+The application's domain model has two classes: `DirectionState` and `RobotState`.
+`DirectionState` represents the robot's direction and provides
+methods for direction related operations - e.g. turning left or right and computing
+the travel distance when moved. `RobotState` represents the robot's state on the board.
+It has `direction` (of type `DirectionState`), board dimensions, and position.
+It offers methods for each user provided operation - e.g. place, move, and turn.
+
+The `CommandParser` class parses user commands and "passes" them to the appropriate `RobotState` methods.
+For extensibility, we've implemented and interface `IOManager`, which abstracts away input and output.
+The `CommandParser` class uses an instance of `IOManager` to receive commands and output the result.
+
+The entry point of the application `index.ts` brings it all together and starts it.
+
 ## Tools and configuration
 
-- The NVM version is configured in `.nvmrc`
+- We use [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to ensure consistent Node JS version:
+  - The NVM version is configured in `.nvmrc`
   - Run `nvm install` the first time, and then `nvm use` to ensure you have the correct version.
 - For unit tests, we use [Jest](https://jestjs.io/):
   - It's configured in `jest.config.js`, which defines minumum coverage, excluded files, etc.
@@ -30,7 +44,7 @@ application, which simulates a toy robot moving on a table top.
 
 ## Build and Run
 
-You can either build and run the application locally, by installing
+You can either build, test, and run the application locally, by installing
 the required runtime and tools on your computer, or use
 [Docker](https://www.docker.com/) to build and run without any
 additional configuration.
@@ -40,7 +54,7 @@ additional configuration.
 On a Unix computer, please install [Node Version Manager NVM](https://github.com/nvm-sh/nvm).
 For Windows, you can install
 [NVM-Windows](https://github.com/coreybutler/nvm-windows) instead.
-Alternatively, you can manually install the latest Node JS LTS version `v18.18.0``.
+Alternatively, you can manually install the latest Node JS LTS version `v18.18.0`.
 
 Then the following commands will build, test, and run the app:
 
