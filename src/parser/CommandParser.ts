@@ -5,15 +5,17 @@ export class CommandParser {
   constructor(private io: IOManager, private robotState: RobotState) {}
 
   public async start() {
-    await this.io.writeLine("Welcome to the Robot Simulator!");
+    try {
+      await this.io.writeLine("Welcome to the Robot Simulator!");
 
-    let finished = false;
-    do {
-      const command = await this.io.promptForLine("Enter command:");
-      finished = await this.processCommand(command);
-    } while (!finished);
-
-    this.io.close();
+      let finished = false;
+      do {
+        const command = await this.io.promptForLine("Enter command:");
+        finished = await this.processCommand(command);
+      } while (!finished);
+    } finally {
+      await this.io.close();
+    }
   }
 
   /**

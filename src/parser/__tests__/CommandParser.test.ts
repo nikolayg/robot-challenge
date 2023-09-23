@@ -42,4 +42,43 @@ describe("CommandParser", () => {
       expect(io.writeLine).toHaveBeenCalledWith("Good Bye!");
     });
   });
+
+  describe("start", () => {
+    test("reads command and processes them one by one", async () => {
+      const io: IOManager = {
+        promptForLine: jest
+          .fn()
+          .mockReturnValueOnce(Promise.resolve("line 1"))
+          .mockReturnValueOnce(Promise.resolve("line 2"))
+          .mockReturnValueOnce(Promise.resolve("line 3")),
+        writeLine: jest.fn(_i => Promise.resolve("")),
+        close: jest.fn(() => Promise.resolve(""))
+      };
+      const robotState = {
+        place: jest.fn(_i => null),
+        move: jest.fn(() => null),
+        turn: jest.fn(_i => null),
+        toString: jest.fn(() => null)
+      };
+
+      const commandParser = new CommandParser(io, robotState as any);
+
+      // Mock processCommand - we're only testing "start"
+      commandParser.processCommand = jest
+        .fn()
+        .mockReturnValueOnce(Promise.resolve(false))
+        .mockReturnValueOnce(Promise.resolve(false))
+        .mockReturnValueOnce(Promise.resolve(true));
+
+      await commandParser.start();
+
+      expect(io.writeLine).toHaveBeenCalled();
+      expect(io.promptForLine).toHaveBeenCalledTimes(3);
+      expect(commandParser.processCommand).toHaveBeenCalledTimes(3);
+      expect(commandParser.processCommand).toHaveBeenCalledWith("line 1");
+      expect(commandParser.processCommand).toHaveBeenCalledWith("line 2");
+      expect(commandParser.processCommand).toHaveBeenCalledWith("line 3");
+      expect(io.close).toHaveBeenCalledTimes(1);
+    });
+  });
 });
