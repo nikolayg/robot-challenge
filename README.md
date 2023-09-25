@@ -21,7 +21,7 @@ It has `direction` (of type `DirectionState`), board dimensions, and position.
 It offers methods for each user provided operation - e.g. place, move, and turn.
 
 The `CommandParser` class parses user commands and "passes" them to the appropriate `RobotState` methods.
-For extensibility, we've implemented and interface `IOManager`, which abstracts away input and output.
+For extensibility, we've implemented an interface `IOManager`, which abstracts away input and output.
 The `CommandParser` class uses an instance of `IOManager` to receive commands and output the result.
 
 The entry point of the application `index.ts` brings it all together and starts it.
